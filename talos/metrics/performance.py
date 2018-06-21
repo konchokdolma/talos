@@ -22,8 +22,6 @@ class Performance():
         self.trues_and_falses()
         self.f1score()
         self.balance()
-        self.one_rule()
-        self.zero_rule()
 
     def multi_class(self):
 
@@ -99,7 +97,7 @@ class Performance():
             elif self.y_pred[i] == 0 and self.y_val[i] == 0:
                 self.tn += 1
             elif self.y_pred[i] == 0 and self.y_val[i] == 1:
-                self.fn += 1
+                self.fp += 1
 
     def balance(self):
 
@@ -111,10 +109,10 @@ class Performance():
 
         '''Returns accuracy for all 0s'''
 
-        self.zero_rule = 1 - self.balance
+        return 1 - self.balance
 
     def one_rule(self):
 
         '''Returns accuracy for all 1s'''
 
-        self.one_rule = self.balance
+        return self.balance
